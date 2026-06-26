@@ -9,7 +9,12 @@ import requests
 #    "Error al obtener el post"
 
 def obtener_post():
-    # TODO: tu código aquí
-    pass
+    try:
+        response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+        response.raise_for_status()
+        post = response.json()
+        print(f"Titulo: {post['title']}")
+    except Exception as e:
+        print("Error al obtener el post")
 
 obtener_post()
