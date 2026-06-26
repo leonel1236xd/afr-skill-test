@@ -12,4 +12,11 @@
 -- de empleados que ganan MÁS que el promedio salarial
 -- de su propio departamento.
 -- Ordena por salario de forma descendente.
-/* tu código aquí */
+SELECT nombre, salario
+FROM empleados e1
+WHERE salario > (
+    SELECT AVG(salario)
+    FROM empleados e2
+    WHERE e1.departamento = e2.departamento
+)
+ORDER BY salario DESC;
