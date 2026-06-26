@@ -10,7 +10,21 @@ export default function Perfil() {
     // https://jsonplaceholder.typicode.com/users/1
     // Guarda el resultado en "usuario" con setUsuario
     // y cambia "cargando" a false cuando finalice
-    /* tu código aquí */
+    fetch('https://jsonplaceholder.typicode.com/users/1')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error al extraer información de la API');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setUsuario(data);
+        setCargando(false);
+      })
+      .catch(error => {
+        console.error(error.message);
+        setCargando(false);
+      });
   }, []);
 
   if (cargando) return <ActivityIndicator />;
