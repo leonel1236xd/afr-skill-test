@@ -6,9 +6,21 @@
 # 4. obtener_saldo()   → retorna el saldo actual
 
 class CuentaBancaria:
-    # TODO: tu código aquí
-    pass
+    def __init__(self, titular, saldo_inicial=0):
+        self.titular = titular
+        self.saldo_inicial = saldo_inicial
 
+    def depositar(self, monto):
+        self.saldo_inicial += monto
+
+    def retirar(self, monto):
+        if monto > self.saldo_inicial:
+            print('Saldo insuficiente')
+        else:
+            self.saldo_inicial -= monto
+
+    def obtener_saldo(self):
+        return self.saldo_inicial
 
 # No modificar el siguiente bloque
 cuenta = CuentaBancaria("Ana", 100)
